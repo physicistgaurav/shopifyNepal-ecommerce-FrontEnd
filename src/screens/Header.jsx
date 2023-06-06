@@ -1,9 +1,10 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light py-2 custom-navbar">
       <div className="container-fluid py-2">
         <button
           className="navbar-toggler"
@@ -45,6 +46,10 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        <NavLink to="/cart" className="btn btn-outline-dark ms-2">
+          <FontAwesomeIcon icon={faShoppingCart} className="me-1" />
+          Cart (0)
+        </NavLink>
       </div>
     </nav>
   );

@@ -171,3 +171,29 @@ code {
   color: #fff;
 }
 
+
+@media (max-width: 767px) {
+  .carousel-item img {
+    max-height: 400px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .carousel-item img {
+    max-height: 600px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .carousel-item img {
+    max-height: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .carousel-item img {
+    max-height: 850px;
+  }
+} 
+
+

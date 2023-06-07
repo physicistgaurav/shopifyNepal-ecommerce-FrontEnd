@@ -3,19 +3,20 @@ import Header from "./screens/Header";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Contact from "./screens/Contact";
+import Product from "./screens/product/Product";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Header />
-        <About />
-        <Contact />
-
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/contact" component={Contact} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/products" element={<Product />} />
+
+          <Route path="*">404 Not Found! </Route>
         </Routes>
       </Router>
     </div>

@@ -39,3 +39,135 @@ code {
 .product img:hover{
   transform: scale(1.1);
 }
+
+
+/* About */
+
+.section-white {
+  background: #fff;
+  padding: 70px 0;
+}
+
+
+
+.team-item {
+  background-color: #f4f5f6;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px 0;
+
+  padding: 50px 20px 40px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -ms-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-item:hover{
+  background:#686ee2 ;
+  color: #fff;
+}
+.team-item:hover p {
+  color: #fff;
+}
+
+.team-img {
+  width: 190px;
+  max-width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  justify-content: center;
+  align-self: center;
+
+}
+
+@media (max-width: 768px) {
+  .team-img {
+    max-width: 120px; 
+  }
+}
+
+.team-item h3 {
+  margin: 20px 0 1px 0 !important;
+  color: #454545;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  white-space: pre-line;
+  text-align: center;
+}
+
+.team-item:hover h3{
+  color: #ddd;
+}
+
+.team-info{
+  display: block;
+  margin-bottom: 0;
+}
+
+.team-info p {
+  font-size: 14px;
+  color: #6b5353;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.team-info::after{
+  background: #008aff;
+}
+
+
+.team-info ul.team-icon {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.team-info ul.team-icon li {
+  margin-right: 10px;
+}
+
+.team-info ul.team-icon li a {
+  color: #888;
+}
+
+.team-info ul.team-icon li a:hover {
+  color: #333;
+}
+
+.fa-twitter,
+.fa-facebook,
+.fa-linkedin {
+  font-size: 20px;
+}
+
+.team-item:hover .fa-twitter,
+.team-item:hover .fa-facebook,
+.team-item:hover .fa-linkedin {
+  color: #fff;
+}
+

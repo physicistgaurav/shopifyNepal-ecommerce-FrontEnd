@@ -41,7 +41,6 @@ const Home = () => {
             <img
               src="src/assets/images/bg.jpg"
               className="d-block w-100"
-              alt="IPhone"
               height="850px"
             />
           </div>
@@ -49,7 +48,6 @@ const Home = () => {
             <img
               src="src/assets/images/check.jpg"
               className="d-block w-100"
-              alt="IPhone"
               height="850px"
             />
           </div>
@@ -57,7 +55,6 @@ const Home = () => {
             <img
               src="src/assets/images/model.avif"
               className="d-block w-100"
-              alt="IPhone"
               height="850px"
             />
           </div>
@@ -65,7 +62,6 @@ const Home = () => {
             <img
               src="src/assets/images/free2.avif"
               className="d-block w-100"
-              alt="IPhone"
               height="850px"
             />
           </div>

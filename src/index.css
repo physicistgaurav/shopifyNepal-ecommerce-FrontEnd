@@ -80,9 +80,9 @@ code {
 }
 
 .team-img {
-  width: 190px;
-  max-width: 200px;
-  height: 200px;
+  width: 250px;
+  /* max-width: 200px; */
+  height: 250px;
   border-radius: 50%;
   margin-bottom: 10px;
   justify-content: center;
@@ -90,9 +90,76 @@ code {
 
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 908px) {
+  .team-item {
+    flex-direction: column;
+  }
+  
   .team-img {
-    max-width: 120px; 
+    max-width: 150px;
+    max-height: 150px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 990px) {
+  .team-item {
+    flex-direction: column;
+  }
+  
+  .team-img {
+    max-width: 160px;
+    max-height: 160px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 1090px) {
+  .team-item {
+    flex-direction: column;
+  }
+  
+  .team-img {
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .team-item {
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    width: 400px;
+  }
+  
+  .team-img {
+    max-width: 140px;
+    max-height: 150px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .team-img {
+    max-width: 100px;
+  }
+}
+
+@media (max-width: 320px) {
+  .team-img {
+    max-width: 80px;
   }
 }
 
@@ -174,7 +241,7 @@ code {
 
 @media (max-width: 767px) {
   .carousel-item img {
-    max-height: 400px;
+    max-height: 300px;
   }
 }
 
@@ -197,3 +264,77 @@ code {
 } 
 
 
+/* product */
+
+.product-image {
+  height: 600px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 20px; 
+}
+
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+    .row {
+      flex-direction: column;
+    }
+    
+    .product-image {
+      height: auto;
+      width: 100%;
+      margin-bottom: 0;
+    }
+    
+    .display-5 {
+      font-size: 24px;
+    }
+    
+    .lead {
+      font-size: 16px;
+    }
+  }
+  
+
+/* skeleton */
+
+.row {
+  margin-bottom: 20px;
+margin: 20px; }
+
+.gap {
+  height: 20px; 
+  margin: 20px;
+
+}
+
+
+
+/* checkout */
+
+.list-group-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.item-image img {
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.text-muted {
+  margin-left: auto;
+}

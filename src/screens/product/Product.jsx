@@ -2,11 +2,10 @@
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { NavLink } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-import { rating } from "@material-tailwind/react";
+import { NavLink } from "react-router-dom";
 
-const Product = () => {
+function Product() {
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState(products);
   const [loading, setLoading] = useState(false);
@@ -27,17 +26,38 @@ const Product = () => {
   const Loadiing = () => {
     return (
       <>
-        <div className="col-md-3 mb-4">
-          <Skeleton height={350} width={350} />
-        </div>
-        <div className="col-md-3 mb-4">
-          <Skeleton height={350} width={350} />
-        </div>
-        <div className="col-md-3 mb-4">
-          <Skeleton height={350} width={350} />
-        </div>
-        <div className="col-md-3 mb-4">
-          <Skeleton height={350} width={350} />
+        <div className="container my-5 py-3">
+          <div className="row">
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+          </div>
+
+          <div className="gap"></div>
+
+          <div className="row">
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+            <div className="col-md-3 mb-4">
+              <Skeleton height={350} width={350} />
+            </div>
+          </div>
         </div>
       </>
     );
@@ -132,13 +152,12 @@ const Product = () => {
                       $ {product.price}
                     </button>
 
-                    <button
-                      className="btn btn-secondary mx-2 w-auto"
+                    <NavLink
                       to={`/products/${product.id}`}
-                      onClick={() => handleAddToCart(product)}
+                      className="btn btn-secondary mx-2 w-auto"
                     >
-                      Add to Cart
-                    </button>
+                      Buy Now
+                    </NavLink>
                   </div>
                 </div>
               </div>
@@ -166,6 +185,6 @@ const Product = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Product;

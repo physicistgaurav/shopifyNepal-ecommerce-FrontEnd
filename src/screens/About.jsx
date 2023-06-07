@@ -12,11 +12,11 @@ const About = () => {
           <div className="col-sm-6 col-md-4">
             <div className="team-item">
               <img
-                src="src/assets/images/balen.png"
+                src="src/assets/images/robert.avif"
                 className="team-img"
                 alt="pic"
               />
-              <h3>Balen Shah</h3>
+              <h3>Robert De Niro</h3>
               <div className="team-info">
                 <p>Chief Executive Director</p>
                 <p>
@@ -50,11 +50,11 @@ const About = () => {
           <div className="col-sm-6 col-md-4">
             <div className="team-item">
               <img
-                src="src/assets/images/rabi.jpg"
+                src="src/assets/images/al.webp"
                 className="team-img"
                 alt="pic"
               />
-              <h3>Rabi Lamichane</h3>
+              <h3>Al Pacino</h3>
               <div className="team-info">
                 <p>Human Resource Manager</p>
                 <p>
@@ -88,11 +88,11 @@ const About = () => {
           <div className="col-sm-6 col-md-4">
             <div className="team-item">
               <img
-                src="src/assets/images/harka.png"
+                src="src/assets/images/leo.jpg"
                 className="team-img"
                 alt="pic"
               />
-              <h3>Harka Sampang</h3>
+              <h3>Leonardo Di Caprio</h3>
               <div className="team-info">
                 <p>Marketing Manager</p>
                 <p>

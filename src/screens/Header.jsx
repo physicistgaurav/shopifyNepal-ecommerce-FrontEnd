@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const state = useSelector((state) => state.cart.cart);
   return (
     <nav className="navbar navbar-expand-lg navbar-light py-2 custom-navbar">
       <div className="container-fluid py-2">
@@ -48,7 +50,7 @@ const Header = () => {
         </div>
         <NavLink to="/cart" className="btn btn-outline-dark ms-2">
           <FontAwesomeIcon icon={faShoppingCart} className="me-1" />
-          Cart (0)
+          Cart ({state?.length}
         </NavLink>
       </div>
     </nav>

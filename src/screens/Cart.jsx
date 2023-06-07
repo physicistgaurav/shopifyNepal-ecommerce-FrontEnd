@@ -30,10 +30,13 @@ const Cart = () => {
 
   const emptyCart = () => {
     return (
-      <div className="px-4 my-5 bg-light rounded-3 py-5">
+      <div className="px-4 my-5 bg-light rounded-3 py-5 d-flex flex-column align-items-center justify-content-center vh-100">
         <div className="container py-4">
           <div className="row">
-            <h3>Your Cart is Empty</h3>
+            <div className="text-center">
+              <img src="src/assets/images/emptycart.png" alt="Empty Cart" />
+              <h3 className="mt-3">Your Cart is Empty</h3>
+            </div>
           </div>
         </div>
       </div>

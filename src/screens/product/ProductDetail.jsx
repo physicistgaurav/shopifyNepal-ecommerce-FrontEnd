@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import StarRatings from "react-star-ratings";
 
 import { addCart, removeCart } from "../../redux/reducers/cart";
 
@@ -60,22 +61,32 @@ const ProductDetail = () => {
   };
 
   const ShowProduct = () => {
+    const Starrate = product?.rating?.rate;
+    console.log("first", Starrate);
     return (
       <>
         <div className="container my-5 py-3">
           <div className="row">
             <div className="col-md-6 d-flex justify-content-center mx-auto">
               <img
-                src={product.image}
-                alt={product.title}
+                src={product?.image}
+                alt={product?.title}
                 className="product-image"
               />
             </div>
             <div className="col-md-6 d-flex flex-column justify-content-center">
-              <h1 className="display-5 fw-bold">{product.title}</h1>
+              <h1 className="display-5 fw-bold">{product?.title}</h1>
               <hr />
-              <h2 className="my-2">${product.price}</h2>
-              <p className="lead my-2">{product.description}</p>
+              <h2 className="my-2">${product?.price}</h2>
+              <h3 className="my-2 mt-2">{product?.category}</h3>
+
+              <StarRatings
+                rating={Starrate}
+                starRatedColor="#ffd700"
+                numberOfStars={5}
+                name="rating"
+              />
+              <p className="lead my-2">{product?.description}</p>
               <button
                 onClick={() => handleCart(product)}
                 className="btn btn-outline-success px-4 py-2"

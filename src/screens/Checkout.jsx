@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder } from "../redux/reducers/order";
@@ -11,7 +12,7 @@ export const itemList = (item) => {
         <img src={item.image} className="card-img-top" alt={item.title} />
       </div>
       <div className="item-details text-center">
-        <h6 className="my-0">{item.title}</h6>
+        <h6 className="my-0 mt-2">{item.title}</h6>
         <div className="d-flex justify-content-between align-items-center mt-2">
           <h6 className="text-muted">x{item.quantity}</h6>
           <span className="text-muted">${item.price}</span>
@@ -26,10 +27,28 @@ const Checkout = () => {
   const state = useSelector((state) => state.cart.cart);
   var total = state?.reduce((acc, val) => acc + val.price * val.quantity, 0);
 
+  var tax = (total * 0.13).toFixed(2);
+  var totalWithTax = (parseFloat(total) + parseFloat(tax)).toFixed(2);
+
   const [formData, setFormdata] = useState({});
 
   const handelFormdata = (e) => {
     setFormdata({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const [phone, setPhone] = useState("");
+
+  const handleMobilePhone = (e) => {
+    const phoneNumber = e.target.value;
+    setPhone(phoneNumber);
+
+    const phonePattern = /^\d{10}$/;
+
+    if (!phonePattern.test(phoneNumber)) {
+      e.target.classList.add("is-invalid");
+    } else {
+      e.target.classList.remove("is-invalid");
+    }
   };
 
   const checkout = (e) => {
@@ -43,6 +62,8 @@ const Checkout = () => {
     dispatch(removeCart("removeall"));
     toast.success("Order Has Been Placed. Thank You");
   };
+
+  const shippingFees = 1;
   return (
     <>
       <div className="container my-5">
@@ -58,8 +79,22 @@ const Checkout = () => {
               {state.map(itemList)}
 
               <li className="list-group-item d-flex justify-content-between">
-                <span>Total (USD)</span>
+                <span>SubTotal (USD)</span>
                 <strong>${total}</strong>
+              </li>
+              <li className="list-group-item d-flex justify-content-between">
+                <span>Tax (USD)</span>
+                <strong>${tax}</strong>
+              </li>
+              <li className="list-group-item d-flex justify-content-between">
+                <span>Shipping Fees (USD)</span>
+                <strong>${total === 0 ? 0 : shippingFees}</strong>
+              </li>
+              <li className="list-group-item d-flex justify-content-between">
+                <span>Total (USD)</span>
+                <strong>
+                  ${total === 0 ? 0 : totalWithTax - shippingFees}
+                </strong>
               </li>
             </ul>
 
@@ -77,7 +112,7 @@ const Checkout = () => {
             </form>
           </div>
           <div className="col-md-7 col-lg-8">
-            <h4 className="mb-3">Billing address</h4>
+            <h4 className="mb-3">Contact Information</h4>
             <form
               onSubmit={(e) => checkout(e)}
               className="needs-validation"
@@ -86,16 +121,14 @@ const Checkout = () => {
               <div className="row g-3">
                 <div className="col-sm-6">
                   <label htmlFor="firstName" className="form-label">
-                    First name
+                    First Name
                   </label>
                   <input
                     type="text"
                     className="form-control"
                     id="firstName"
-                    placeholder=""
+                    placeholder="Gaurav"
                     onChange={(e) => handelFormdata(e)}
-                    value=""
-                    required=""
                   />
                   <div className="invalid-feedback">
                     Valid first name is required.
@@ -104,23 +137,21 @@ const Checkout = () => {
 
                 <div className="col-sm-6">
                   <label htmlFor="lastName" className="form-label">
-                    Last name
+                    Last Name
                   </label>
                   <input
-                    type="text"
+                    type="lastName"
                     className="form-control"
                     id="lastName"
-                    placeholder=""
+                    placeholder="Rizal"
                     onChange={(e) => handelFormdata(e)}
-                    value=""
-                    required=""
                   />
                   <div className="invalid-feedback">
                     Valid last name is required.
                   </div>
                 </div>
 
-                <div className="col-12">
+                <div className="col-sm-6">
                   <label htmlFor="email" className="form-label">
                     Email <span className="text-muted">(Optional)</span>
                   </label>
@@ -132,20 +163,54 @@ const Checkout = () => {
                     onChange={(e) => handelFormdata(e)}
                   />
                   <div className="invalid-feedback">
-                    Please enter a valid email address htmlFor shipping updates.
+                    Please enter a valid email address for shipping updates.
+                  </div>
+                </div>
+
+                <div className="col-sm-6">
+                  <label htmlFor="tel" className="form-label">
+                    Phone
+                  </label>
+                  {JSON.stringify(phone)}
+                  <input
+                    type="tel"
+                    className="form-control"
+                    id="phone"
+                    placeholder="9812345678"
+                    onChange={(e) => handleMobilePhone(e)}
+                    value={phone}
+                  />
+                  <div className="invalid-feedback">
+                    Please enter a valid Phone Number.
                   </div>
                 </div>
 
                 <div className="col-12">
                   <label htmlFor="address" className="form-label">
-                    Address
+                    BillingAddress
                   </label>
                   <input
                     type="text"
                     onChange={(e) => handelFormdata(e)}
                     className="form-control"
                     id="address"
-                    placeholder="Gwarko, Lalitpur"
+                    placeholder="Your Billing Adress"
+                    required=""
+                  />
+                  <div className="invalid-feedback">
+                    Please enter your shipping address.
+                  </div>
+                </div>
+                <div className="col-12">
+                  <label htmlFor="address" className="form-label">
+                    Shipping Address
+                  </label>
+                  <input
+                    type="text"
+                    onChange={(e) => handelFormdata(e)}
+                    className="form-control"
+                    id="address"
+                    placeholder="Your Shipping Adress"
                     required=""
                   />
                   <div className="invalid-feedback">
@@ -176,7 +241,7 @@ const Checkout = () => {
 
                 <div className="col-md-3">
                   <label htmlFor="zip" className="form-label">
-                    Zip
+                    Postal
                   </label>
                   <input
                     type="text"
@@ -217,7 +282,6 @@ const Checkout = () => {
                     name="paymentMethod"
                     type="radio"
                     className="form-check-input"
-                    checked=""
                     onChange={(e) => handelFormdata(e)}
                     required=""
                   />
@@ -227,28 +291,28 @@ const Checkout = () => {
                 </div>
                 <div className="form-check">
                   <input
-                    id="debit"
+                    id="digital"
                     name="paymentMethod"
                     type="radio"
                     onChange={(e) => handelFormdata(e)}
                     className="form-check-input"
                     required=""
                   />
-                  <label className="form-check-label" htmlFor="debit">
-                    Debit card
+                  <label className="form-check-label" htmlFor="digital">
+                    Esewa/Khalti
                   </label>
                 </div>
                 <div className="form-check">
                   <input
-                    id="paypal"
+                    id="cash"
                     name="paymentMethod"
                     type="radio"
                     onChange={(e) => handelFormdata(e)}
                     className="form-check-input"
                     required=""
                   />
-                  <label className="form-check-label" htmlFor="paypal">
-                    PayPal
+                  <label className="form-check-label" htmlFor="cash">
+                    Cash on Delivery
                   </label>
                 </div>
               </div>

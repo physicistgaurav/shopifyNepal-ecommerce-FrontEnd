@@ -105,63 +105,61 @@ function Product() {
         </div>
         {filter.map((product) => {
           return (
-            <>
-              <div
-                className="card my-5 py-3"
-                key={product.id}
+            <div
+              className="card my-5 py-3"
+              key={product.id}
+              style={{
+                width: "18rem",
+                boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
+                borderRadius: "8px",
+                overflow: "hidden",
+              }}
+            >
+              <img
+                src={product.image}
+                className="card-img-top"
+                alt={product.title}
                 style={{
-                  width: "18rem",
-                  boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
-                  borderRadius: "8px",
-                  overflow: "hidden",
+                  height: "150px",
+                  width: "80%",
+                  objectFit: "contain",
+                  justifyContent: "center",
+                  alignSelf: "center",
                 }}
-              >
-                <img
-                  src={product.image}
-                  className="card-img-top"
-                  alt={product.title}
+              />
+              <div className="card-body text-center d-flex flex-column">
+                <h5 className="card-title">
+                  {product.title.substring(0, 12)}...
+                </h5>
+                <div
                   style={{
-                    height: "150px",
-                    width: "80%",
-                    objectFit: "contain",
                     justifyContent: "center",
                     alignSelf: "center",
+                    marginBottom: 8,
                   }}
-                />
-                <div className="card-body text-center d-flex flex-column">
-                  <h5 className="card-title">
-                    {product.title.substring(0, 12)}...
-                  </h5>
-                  <div
-                    style={{
-                      justifyContent: "center",
-                      alignSelf: "center",
-                      marginBottom: 8,
-                    }}
-                  >
-                    <ReactStars
-                      count={5}
-                      size={24}
-                      value={product.rating.rate}
-                      edit={false}
-                      activeColor="#ffd700"
-                    />
-                  </div>
-                  <div className="d-flex justify-content-center align-items-center mb-3">
-                    <button type="button" className="btn btn-outline-primary">
-                      $ {product.price}
-                    </button>
+                >
+                  <ReactStars
+                    count={5}
+                    size={24}
+                    value={product.rating.rate}
+                    edit={false}
+                    activeColor="#ffd700"
+                  />
+                </div>
+                <div className="d-flex justify-content-center align-items-center mb-3">
+                  <button type="button" className="btn btn-outline-primary">
+                    $ {product.price}
+                  </button>
 
-                    <NavLink
-                      to={`/products/${product.id}`}
-                      className="btn btn-secondary mx-2 w-auto"
-                    >
-                      Buy Now
-                    </NavLink>
-                  </div>
+                  <NavLink
+                    to={`/products/${product.id}`}
+                    className="btn btn-secondary mx-2 w-auto"
+                  >
+                    View Details
+                  </NavLink>
                 </div>
               </div>
-            </>
+            </div>
           );
         })}
       </>

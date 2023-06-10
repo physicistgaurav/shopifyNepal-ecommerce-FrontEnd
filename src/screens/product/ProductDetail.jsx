@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import StarRatings from "react-star-ratings";
@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cartBtn, setCartBtn] = useState("Add to Cart");
-
+  const cart = useSelector((state) => state.cart.cart);
   const dispatch = useDispatch();
   const handleCart = (product) => {
     const data = {
@@ -35,12 +35,16 @@ const ProductDetail = () => {
       setLoading(true);
       const response = await fetch(`https://fakestoreapi.com/products/${id}`);
       setProduct(await response.json());
-      console.log("dd", response);
       setLoading(false);
     };
     getProduct();
   }, [id]);
-
+  useEffect(() => {
+    const item = cart.find((a) => a.id === Number(id));
+    if (item) {
+      setCartBtn("Remove from Cart");
+    }
+  }, [cart]);
   const Loadiing = () => {
     return (
       <>

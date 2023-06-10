@@ -15,7 +15,8 @@ export const itemList = (item) => {
         <h6 className="my-0 mt-2">{item.title}</h6>
         <div className="d-flex justify-content-between align-items-center mt-2">
           <h6 className="text-muted">x{item.quantity}</h6>
-          <span className="text-muted">${item.price}</span>
+          {/* <span className="text-muted">${item.price}</span> */}
+          <span className="text-muted">${item.price * item.quantity}</span>
         </div>
       </div>
     </li>
@@ -29,6 +30,8 @@ const Checkout = () => {
 
   var tax = (total * 0.13).toFixed(2);
   var totalWithTax = (parseFloat(total) + parseFloat(tax)).toFixed(2);
+
+  console.log(totalWithTax);
 
   const [formData, setFormdata] = useState({});
 
@@ -93,7 +96,12 @@ const Checkout = () => {
               <li className="list-group-item d-flex justify-content-between">
                 <span>Total (USD)</span>
                 <strong>
-                  ${total === 0 ? 0 : totalWithTax - shippingFees}
+                  $
+                  {total === 0
+                    ? 0
+                    : (
+                        parseFloat(totalWithTax) + parseFloat(shippingFees)
+                      ).toFixed(2)}
                 </strong>
               </li>
             </ul>
@@ -171,7 +179,6 @@ const Checkout = () => {
                   <label htmlFor="tel" className="form-label">
                     Phone
                   </label>
-                  {JSON.stringify(phone)}
                   <input
                     type="tel"
                     className="form-control"

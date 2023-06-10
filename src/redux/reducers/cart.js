@@ -6,7 +6,14 @@ export const cartSlider = createSlice({
   },
   reducers: {
     addCart: (state, action) => {
-      state.cart.push(action.payload);
+      const newItem = action.payload;
+      const existingItem = state.cart.find((item) => item.id === newItem.id);
+
+      if (existingItem) {
+        existingItem.quantity += newItem.quantity;
+      } else {
+        state.cart.push(newItem);
+      }
     },
     removeCart: (state, action) => {
       if (action.payload === "removeall") {

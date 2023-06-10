@@ -63,7 +63,7 @@ const Cart = () => {
   const calculateSubtotal = () => {
     let subtotal = 0;
     state.forEach((cartItem, ind) => {
-      subtotal += cartItem.price * quantity[ind];
+      subtotal += cartItem.price * cartItem.quantity;
     });
     return subtotal.toFixed(2);
   };
@@ -105,10 +105,11 @@ const Cart = () => {
                   </div>
                   <div className="col-md-4">
                     <h3>{cartItem.title}</h3>
-                    <p className="lead fw-bold">SubTotal: ${cartItem?.price}</p>
-                    <p className="lead">Tax (13%): ${calculateTax()}</p>
+                    <p className="lead">Price per unit: ${cartItem?.price}</p>
+                    <p className="lead fw-bold">
+                      SubTotal: ${cartItem.price * quantity[ind]}
+                    </p>
 
-                    <p className="lead fw-bold">Total: ${calculateTotal()}</p>
                     <div className="col-md-4 d-flex">
                       <button
                         disabled={quantity[ind] === 1}
@@ -149,7 +150,11 @@ const Cart = () => {
             </div>
           );
         })}
+      <div className="mx-auto text-center">
+        <p className="lead">Tax (13%): ${calculateTax()}</p>
 
+        <p className="lead fw-bold">Total: ${calculateTotal()}</p>
+      </div>
       {state.length !== 0 && button()}
     </>
   );

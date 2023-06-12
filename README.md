@@ -47,11 +47,4 @@ Once users have added the desired products to the cart, they can proceed to the 
 Users can view their previous orders by navigating to the "My Orders" page. This page lists all the orders made by the user, along with the order details, including the products, quantities, and total cost.
 Technologies Used
 
-The ShopifyNepal React app utilizes the following technologies:
-
-    React: A JavaScript library for building user interfaces.
-    React Router: A library for implementing routing in a React application.
-    Axios: A library for making HTTP requests to the FakeStore API.
-    Bootstrap: A popular CSS framework for styling the application.
-    FakeStore API: A public API that provides mock product data.
 

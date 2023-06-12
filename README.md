@@ -6,7 +6,8 @@ Getting Started
 To get started with the ShopifyNepal React app, follow the steps below:
 
 
-Clone the repository: git clone https://github.com/physicistgaurav/shopifyNepal-ecommerce-FrontEnd
+    git clone https://github.com/physicistgaurav/shopifyNepal-ecommerce-FrontEnd
+
 
 bash
 

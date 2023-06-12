@@ -8,6 +8,7 @@ import ProductDetail from "./screens/product/ProductDetail";
 import { Toaster } from "react-hot-toast";
 import Cart from "./screens/Cart";
 import Checkout from "./screens/Checkout";
+import OrderDetail from "./screens/OrderDetail";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
           <Route exact path="/products/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order" element={<OrderDetail />} />
+
           <Route path="*">404 Not Found! </Route>
         </Routes>
         <Toaster position="top-center" reverseOrder={false} />

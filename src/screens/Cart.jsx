@@ -62,7 +62,7 @@ const Cart = () => {
 
   const calculateSubtotal = () => {
     let subtotal = 0;
-    state.forEach((cartItem, ind) => {
+    state.forEach((cartItem) => {
       subtotal += cartItem.price * cartItem.quantity;
     });
     return subtotal.toFixed(2);

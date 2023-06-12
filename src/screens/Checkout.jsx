@@ -9,7 +9,13 @@ export const itemList = (item) => {
   return (
     <li className="list-group-item d-flex flex-column align-items-center">
       <div className="item-image">
-        <img src={item.image} className="card-img-top" alt={item.title} />
+        <img
+          src={item.image}
+          className="card-img-top"
+          alt={item.title}
+          height="140"
+          width="140"
+        />
       </div>
       <div className="item-details text-center">
         <h6 className="my-0 mt-2">{item.title}</h6>
@@ -33,10 +39,14 @@ const Checkout = () => {
 
   console.log(totalWithTax);
 
-  const [formData, setFormdata] = useState({});
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    mobileNumber: "",
+  });
 
-  const handelFormdata = (e) => {
-    setFormdata({ ...formData, [e.target.name]: e.target.value });
+  const handleFormData = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const [phone, setPhone] = useState("");
@@ -56,14 +66,24 @@ const Checkout = () => {
 
   const checkout = (e) => {
     e.preventDefault();
+
     const payload = {
-      cart: state,
-      ...formData,
+      cart: state.map((item) => ({
+        title: item.title,
+        image: item.image,
+        quantity: item.quantity,
+        totalPrice: (
+          parseFloat(totalWithTax) + parseFloat(shippingFees)
+        ).toFixed(2),
+      })),
     };
-    console.log(payload);
+
     dispatch(addOrder(payload));
     dispatch(removeCart("removeall"));
-    toast.success("Order Has Been Placed. Thank You");
+
+    console.log("payload", payload);
+
+    toast.success("Order has been placed. Thank you");
   };
 
   const shippingFees = 1;
@@ -136,7 +156,7 @@ const Checkout = () => {
                     className="form-control"
                     id="firstName"
                     placeholder="Gaurav"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                   />
                   <div className="invalid-feedback">
                     Valid first name is required.
@@ -152,7 +172,7 @@ const Checkout = () => {
                     className="form-control"
                     id="lastName"
                     placeholder="Rizal"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                   />
                   <div className="invalid-feedback">
                     Valid last name is required.
@@ -168,7 +188,7 @@ const Checkout = () => {
                     className="form-control"
                     id="email"
                     placeholder="gaurav@example.com"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                   />
                   <div className="invalid-feedback">
                     Please enter a valid email address for shipping updates.
@@ -198,7 +218,7 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-control"
                     id="address"
                     placeholder="Your Billing Adress"
@@ -214,7 +234,7 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-control"
                     id="address"
                     placeholder="Your Shipping Adress"
@@ -230,7 +250,7 @@ const Checkout = () => {
                     Tole
                   </label>
                   <select
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-select"
                     id="state"
                     name="tole"
@@ -255,7 +275,7 @@ const Checkout = () => {
                     className="form-control"
                     id="zip"
                     placeholder=""
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     name="zip"
                     required=""
                   />
@@ -271,7 +291,7 @@ const Checkout = () => {
                   className="form-check-input"
                   id="same-address"
                   name="same-address"
-                  onChange={(e) => handelFormdata(e)}
+                  onChange={handleFormData}
                 />
                 <label className="form-check-label" htmlFor="same-address">
                   Notify me Prior to Shipping my product
@@ -289,7 +309,7 @@ const Checkout = () => {
                     name="paymentMethod"
                     type="radio"
                     className="form-check-input"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     required=""
                   />
                   <label className="form-check-label" htmlFor="credit">
@@ -301,7 +321,7 @@ const Checkout = () => {
                     id="digital"
                     name="paymentMethod"
                     type="radio"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-check-input"
                     required=""
                   />
@@ -314,7 +334,7 @@ const Checkout = () => {
                     id="cash"
                     name="paymentMethod"
                     type="radio"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-check-input"
                     required=""
                   />
@@ -334,7 +354,7 @@ const Checkout = () => {
                     name="cartname"
                     className="form-control"
                     id="cc-name"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     placeholder=""
                     required=""
                   />
@@ -352,7 +372,7 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-control"
                     id="cc-number"
                     name="cc-number"
@@ -374,7 +394,7 @@ const Checkout = () => {
                     id="cc-expiration"
                     name="cc-expiration"
                     placeholder=""
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     required=""
                   />
                   <div className="invalid-feedback">
@@ -388,7 +408,7 @@ const Checkout = () => {
                   </label>
                   <input
                     type="text"
-                    onChange={(e) => handelFormdata(e)}
+                    onChange={handleFormData}
                     className="form-control"
                     id="cc-cvv"
                     name="cc-cvv"

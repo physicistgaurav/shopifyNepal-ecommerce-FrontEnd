@@ -46,11 +46,16 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link mx-3" to="/order">
+                My Order
+              </NavLink>
+            </li>
           </ul>
         </div>
         <NavLink to="/cart" className="btn btn-outline-dark ms-2">
           <FontAwesomeIcon icon={faShoppingCart} className="me-1" />
-          Cart ({state?.length}
+          Cart ({state?.length})
         </NavLink>
       </div>
     </nav>

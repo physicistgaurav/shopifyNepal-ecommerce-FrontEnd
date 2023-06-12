@@ -6,6 +6,7 @@ export const orderSlider = createSlice({
   },
   reducers: {
     addOrder: (state, action) => {
+      // console.log(action.payload)
       state.order.push(action.payload);
     },
   },

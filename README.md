@@ -4,8 +4,9 @@ ShopifyNepal is a React application that allows users to browse and shop for var
 Getting Started
 
 To get started with the ShopifyNepal React app, follow the steps below:
+Clone the repository:
 
-    Clone the repository: git clone https://github.com/physicistgaurav/shopifyNepal-ecommerce-FrontEnd
+ git clone https://github.com/physicistgaurav/shopifyNepal-ecommerce-FrontEnd
 
 bash
 

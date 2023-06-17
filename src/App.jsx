@@ -10,6 +10,9 @@ import Cart from "./screens/Cart";
 import Checkout from "./screens/Checkout";
 import OrderDetail from "./screens/OrderDetail";
 
+
+// main App
+
 function App() {
   return (
     <div className="App">
